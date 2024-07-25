@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="icon" href="large.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+        ::-webkit-scrollbar {
+            width: 0;
+            display: none;
+        }
+        * {
+            scrollbar-width: none;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
+            background-color: #0f1e27;
+            color: #fff;
+            padding-bottom: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .sign-in-out {
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        .sign-in-out i {
+            margin-right: 5px;
+            }
+
+        main {
+            padding: 20px;
+            height: 2830px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #0f1e27;
+            color: #fff;
+            padding: 40px 0;            
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            flex: 1;
+        }
+
+        .footer-right {
+            flex: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: #fff;
+        }
+
+        .social-media {
+            margin-right: 20px;
+        }
+
+        .social-icon {
+            color: #ccc;
+            font-size: 24px;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+        }
+
+        .contact-info {
+            max-width: 300px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+
+        #now-streaming {
+            background-color: #f1eeee;
+            padding: 40px 0;
+        }
+
+        #now-streaming h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #upcoming-movies {
+            background-color: #f1eeee;
+            padding: 40px 0;
+        }
+
+        #upcoming-movies h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+                .movie-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .movie {
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .movie img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .movie h3 a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 80px;
+        }
+
+        .movie h3 a:hover {
+            text-decoration: none;
+        }
+
+        .movie-genre {
+            color: #888;
+            font-size: 10px;
+            font-weight: 15px;
+            margin-top: 5px;
+        }
+        
+        #Trending-Movies {
+             padding: 40px 0;
+             background-color: #f1eeee;
+             text-align: center;
+        }
+
+        .movie-list{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .movie-0{
+            width: calc(20% - 20px); 
+            padding: 20px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            margin-bottom: 20px; 
+             }
+
+        .movie-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            flex: 5;
+        }
+
+        .movie-subtitle {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .see-more-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #searchInput {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        #searchButton {
+            background-color: #3333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #searchButton i {
+            font-size: 18px;
+        }
+
+        #d10 {
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            top: 126px;
+            visibility: hidden;
+            left: 0;
+        }
+
+        .movie-details img {
+            width: 1350px;
+            height: 400px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .movie-details {
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .poster {
+            position: absolute;
+        }
+
+        .con {
+            background-image: linear-gradient(to left, #141618 30%, #262c3636);
+            color: white;
+            height: 400px;
+            width: 100%;
+            float: right;
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+            padding-right: 30px;
+        }
+
+        .con .con-overlay {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+            position: relative;
+            float: right;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .con .book a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .con .book {
+            background-color: rgb(255, 63, 104);
+            width: 200px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+            font-size: large;
+            position: relative;
+        }
+
+        .rate {
+            background-color: rgb(52, 52, 52);
+            border-radius: 5px;
+            width: 50%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .rate i {
+            color: rgb(255, 63, 104);
+        }
+
+        .rate .ratenow {
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .rate a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .lay {
+            background-color: white;
+            border-radius: 5px;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .lay p {
+            color: black;
+        }
+
+        .movie-info {
+            margin-top: 100px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #c8bdbd;
+            margin: 20px 0;
+        }
+
+        .cast img,
+        .crew img {
+            border-radius: 70%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .cast,
+        .crew {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+
+        .cast-2,
+        .crew-2 {
+            display: flex;
+        }
+        #d11 {
+            width: 500px;
+            height: 300px;
+            top: 30%;
+            left: 40%;
+            visibility: hidden;
+        }
+
+        #bt11 {
+            background-color: inherit;
+            border: inherit;
+        }
+
+        #d11 .container {
+            text-align: center;
+        }
+
+        #d11 .container h1 {
+            margin-bottom: 20px;
+        }
+
+        #d11 button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #d11 .form-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #d11 .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #d11 #loginForm,
+        #d11 #signupForm {
+            text-align: center;
+        }
+
+        #d11 form {
+            margin-top: 20px;
+        }
+
+        #d11 form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #d11 form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #d11 form button {
+            width: 100%;
+        }
+
+        #d11 p {
+            margin-top: 10px;
+        }
+
+        #d11 a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul{
+            height: 60px;
+            display: flex;
+            width: 950px;
+            justify-content: center;
+            align-items: last baseline;
+        }
+        .nav-img{
+            flex: 1;
+            position: relative;
+            top: 25px;
+        }
+        .nav-text{
+            flex: 10;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 style="text-align: center;">Movie Ticket Booking</h1>
+            <nav class="navigation">
+                <ul>
+                <div class="nav-img" >
+                    <img src="Logo.png" height="100px" width="150px">
+                </div>
+                <div class="nav-text">
+                    <li><a href="Movie Ticket Booking.html">Home</a></li>
+                    <li><a onclick="scrollIntoView()">Movies</a></li>
+                    <li><a href="#cinemas">Cinemas</a></li>
+                    <li><a href="#orders">Orders</a></li>
+                    <input type="text" id="searchInput" placeholder="Search for movies..." oninput="searchMovies()">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
+                    <button id="bt11" onclick="fun1()"><div class="sign-in-out" id="sign-in-out">
+                        <i class="fas fa-user"></i> Sign In / Sign Up
+                    </div></button>
+                </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="now-streaming">
+            <div class="container">
+                <h2>Now Streaming Movies</h2>
+                <div class="movie-list">
+                    <!-- First four movies -->
+                    <div class="movie">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdoL9HuMXBk_DF8qA0fLw-OSywUTgzBS6In13oXc5rkvhLWtM_" alt="Godzilla X Kong" class="Movie-poster">
+                        <h3><a onclick="fun()" class="movie-details">Godzilla X  Kong<h6 class="movie-genre">Action / Sci-Fi / Thriller</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRsDrEbhXDgDVSEqgdzHqNH7jVHdR29f2hi3AHx-6rlTuHB9TGm" alt="Dune">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Furiosa: A Mad Max Saga')" class="movie-details">Furiosa: A Mad Max<h6 class="movie-genre">Action/Adventure</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://media.gv.com.sg/imagesresize/img1044.jpg" alt="Dune">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Dune')" class="movie-details">Dune<h6 class="movie-genre">Adventure / Drama / Sci-Fi</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://dx35vtwkllhj9.cloudfront.net/universalstudios/kung-fu-panda-4/images/regions/us/onesheet.jpg" alt="Kung Fu Panda 4">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Kung Fu Panda 4')" class="movie-details">Kung Fu Panda 4<h6 class="movie-genre">Animation / Action / Comedy</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSIY3nvZcpNGydPGuXa29AvrC67mN1pg__38KRJJ26nNODB425K" alt="Road House">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Road House')" class="movie-details">Road House<h6 class="movie-genre">Action / Thriller</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTgjCNHZgWRPCVjwCOO93ukbgeXNVT43bxiv-u-cVRdOmBkE_8_" alt="Wonka">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Wonka')" class="movie-details">Wonka<h6 class="movie-genre">Adventure / Action</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://media.gv.com.sg/imagesresize/img1143.jpg" alt="Imaginary">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Imaginary')" class="movie-details">Imaginary<h6 class="movie-genre">Horror / Mystery</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://media.gv.com.sg/imagesresize/img7250.jpg" alt="Be Together">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Be Together')" class="movie-details">Be Together<h6 class="movie-genre">Romance</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://media.gv.com.sg/imagesresize/img1088.jpg" alt="Migration">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Migration')" class="movie-details">Migration<h6 class="movie-genre">Adventure / Comedy </h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://media.gv.com.sg/imagesresize/img1105.jpg" alt="Bob Marley: One Love">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Bob Marley: One Love')" class="movie-details">Bob Marley: One Love<h6 class="movie-genre">Musical/Drama </h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://media.gv.com.sg/imagesresize/img2145.jpg" alt="Oversteer">
+                        <h3><a href="Ticket Booking.html" onclick="updateMovieName('Oversteer')" class="movie-details">Oversteer<h6 class="movie-genre">Action/ Comedy/ Drama</h6></a></h3>
+                    </div>
+                    
+                </div>
+                <!-- See More link -->
+                <div class="container" id="see-more-container-now-streaming">
+                    <a href="javascript:void(0)" class="see-more-link" onclick="viewMoreMovies('now-streaming')">See More</a>
+                </div>
+            </div>
+        </section>
+        <div id="d10" class="movie-details">
+        <div class="poster">
+            <h2 onclick="toggleMovieDetails('d10')"><img src="https://c4.wallpaperflare.com/wallpaper/945/886/525/godzilla-king-kong-godzilla-vs-kong-movies-science-fiction-hd-wallpaper-thumb.jpg" alt="Image"></h2>
+        </div>
+        <div class="con">
+            <div class="con-overlay">
+                <h1>Godzilla x Kong: The New Empire</h1>
+                <div class="rate">
+                    <p><i class="fa-solid fa-star"></i>9.3/10</p>
+                    <button class="ratenow"><a href="#">Rate Now</a></button>
+                </div>
+                <div class="lay">
+                    <p>2D, MX4D 3D, 4DX 3D, 3D, ICE 3D, 4DX, IMAX 3D, 3D SCREEN X</p>
+                </div>
+                <div class="lay">
+                    <p>English, Hindi, Telugu, Tamil</p>
+                </div>
+                <p>1h 54m • Action, Sci-Fi, Thriller • UA • 29 Mar, 2024</p>
+                <h3><a href="Ticket Booking.html" onclick="updateMovieName('Godzilla X  Kong')" class="movie-details"><button class="book">Book Tickets</button></a></h3>
+            </div>
+        </div> 
+        <div class="container">
+            <hr>
+            <div class="movie-info">
+              <h2>About the Movie</h2>
+              <p>An all-new adventure that pits the almighty Kong and the fearsome Godzilla against a colossal undiscovered threat hidden <br>within our world, challenging their very existence-and our own.</p>
+            </div>
+            <hr class="hr-2">
+            <div class="cast">
+              <h2>Cast</h2>
+              <div class="cast-2">
+                <div class="person">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8VJKH0wjvWv8Y1qHGFGLLdDk2t9eeejLc5PMTUJFfmA&s" alt="Cast 1">
+                    <p class="name">Dan Stevens</p>
+                    <p class="occupation">Actor</p>
+                </div>
+                <div class="person">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Rebecca_Hall_Berlinale_2010_cropped.jpg/330px-Rebecca_Hall_Berlinale_2010_cropped.jpg" alt="Cast 2">
+                    <p class="name">Rebecca Hall</p>
+                    <p class="occupation">Actor</p>
+                </div>
+                <div class="person">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Brian_Tyree_Henry_by_Gage_Skidmore.jpg/330px-Brian_Tyree_Henry_by_Gage_Skidmore.jpg" alt="Cast 3">
+                    <p class="name">Brian Tyree Henry</p>
+                    <p class="occupation">Actor</p>
+                </div>
+                <!-- Add more person divs as needed -->
+            </div>
+            <hr>
+            <div class="crew">
+                <h2>Crew</h2>
+                <div class="crew-2">
+                  <div class="person">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8VJKH0wjvWv8Y1qHGFGLLdDk2t9eeejLc5PMTUJFfmA&s" alt="Cast 1">
+                      <p class="name">Adam Wingard</p>
+                      <p class="occupation">Director</p>
+                  </div>
+                  <div class="person">
+                      <img src="https://m.media-amazon.com/images/M/MV5BODAxMTc5ODIxNl5BMl5BanBnXkFtZTcwODk2NjI0OQ@@._V1_.jpg" alt="Cast 2">
+                      <p class="name">Simon Barret</p>
+                      <p class="occupation">Writer</p>
+                  </div>
+                  <div class="person">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Brian_Tyree_Henry_by_Gage_Skidmore.jpg/330px-Brian_Tyree_Henry_by_Gage_Skidmore.jpg" alt="Cast 3">
+                      <p class="name">Terry Rossio</p>
+                      <p class="occupation">Screenplay</p>
+                  </div>
+                  <!-- Add more person divs as needed -->
+                  
+              </div>
+            </div>
+          </div>
+        
+    </div>
+</div>
+        <section id="upcoming-movies">
+            <div class="container">
+                <h2>Upcoming Movies</h2>
+                <div class="movie-list">
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/knox-goes-away-et00389719-1709549073.jpg" alt="Upcoming Movie 1">
+                        <h3><a href="#" class="movie-details">Knox Goes Away<h6 class="movie-genre">Adventure / Action </h6></a></h3>
+                        <h1></h1>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/appu-et00384837-1710160586.jpg" alt="Upcoming Movie 2">
+                        <h3><a href="#" class="movie-details">Appu<h6 class="movie-genre">Adventure / Comedy /Drama</h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-first-omen-et00382581-1710244107.jpg" alt="Upcoming Movie 3">
+                        <h3><a href="#" class="movie-details">The First Omen<h6 class="movie-genre">Horrer / Thriller </h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/civil-war-et00387403-1712223189.jpg" alt="Upcoming Movie 4">
+                        <h3><a href="#" class="movie-details">Civil War<h6 class="movie-genre">Action / Thriller </h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/one-life-et00389727-1718879462.jpg" alt="Upcoming Movie 4">
+                        <h3><a href="#" class="movie-details">One Life <h6 class="movie-genre">War / Drama </h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/monkey-man-et00385925-1712138131.jpg">
+                        <h3><a href="#" class="movie-details">Monkey Man<h6 class="movie-genre"><h6 class="movie-genre">Adventure / Comedy </h6> </h6></a></h3>
+                        <h1></h1>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/the-fall-guy-et00375399-1716811094.jpg" alt="Upcoming Movie 2">
+                        <h3><a href="#" class="movie-details">The Fall Guy<h6 class="movie-genre">Action / Drama </h6></a></h3>
+                    </div>
+                    <div class="movie">
+                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/ghostbusters-et00036857-25-01-2021-03-14-16.jpg" alt="Upcoming Movie 3">
+                        <h3><a href="#" class="movie-details">Ghostbusters<h6 class="movie-genre">Adventure / Fantasy </h6></a></h3>
+                    </div>
+                    <!-- Add more upcoming movies here if needed -->
+                    <div class="container" id="see-more-container-upcoming-movies">
+                        <a href="javascript:void(0)" class="see-more-link" onclick="viewMoreMovies('upcoming-movies')">See More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <section>
+                <div id="Trending-Movies">
+                    <h2>Trending Movies</h2>
+                    <div class="movie-list">
+                        <div class="movie-0">
+                            <div class="movie-name">Dune: Part Two</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Kung Fu Panda 4</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Bob Marley: One Love</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Mean Girls</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">The Beekeeper</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Ghostbusters: Frozen Empire</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Argylle</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Madame Web</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Night Swim</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                        <div class="movie-0">
+                            <div class="movie-name">Imaginary</div>
+                            <div class="movie-subtitle">Movies</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </section>
+        
+        
+        <div id="d11">
+            <div class="overlay" id="overlay">
+                <div class="form-container">
+                    <span class="close-btn" onclick="closeForms()">&times;</span>
+                    <div id="loginForm">
+                        <h2>Sign In</h2>
+                        <form action="" method="post">
+                            <label for="username">Email or phone number:</label>
+                            <input type="text" name="username" required>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" required>
+        
+                            <button type="submit">Sign In</button>
+                        </form>
+        
+                        <p>Don't have an account? <a href="#" onclick="toggleForms()">Sign Up now.</a></p>
+                        <p><a href="#">Forgot password?</a></p>
+                    </div>
+        
+                    <div id="signupForm" style="display: none;">
+                        <h2>Sign Up</h2>
+                        <form action="" method="post">
+                            <label for="newUsername">Email:</label>
+                            <input type="email" name="newUsername" required>
+        
+                            <label for="newPassword">Password:</label>
+                            <input type="password" name="newPassword" required>
+        
+                            <button type="submit">Sign Up</button>
+                        </form>
+        
+                        <p>Already have an account? <a href="#" onclick="toggleForms()">Sign In.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2024 Movie Ticket Booking</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Movies</a></li>
+                            <li><a href="#">Tickets</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="social-media">
+                        <h3>Follow Us</h3>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p>Email: info@movieticketbooking.com</p>
+                        <p>Phone: +91 9734567890</p>
+                        <p>Address: Movie Street, MS City, VX Country</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+
+    <script>
+        function fun(){
+            document.getElementById("now-streaming").style.visibility="hidden";
+            document.getElementById("d10").style.visibility="visible";
+            document.getElementById("upcoming-movies").style.visibility="hidden";
+        }
+        var moviesData = [
+        ];
+
+        localStorage.setItem("moviesData", JSON.stringify(moviesData));
+
+        // Retrieve movie data from local storage
+        var storedMoviesData = JSON.parse(localStorage.getItem("moviesData"));
+
+        // Check if there's any stored movie data
+        if (storedMoviesData) {
+            storedMoviesData.forEach(function(movie) {
+                var movieElement = document.createElement("div");
+                movieElement.classList.add("movie");
+
+                var imageElement = document.createElement("img");
+                imageElement.src = movie.image;
+                imageElement.alt = movie.title;
+                movieElement.appendChild(imageElement);
+
+                var titleElement = document.createElement("h3");
+                var titleLink = document.createElement("a");
+                titleLink.href = "Ticket Booking.html";
+                titleLink.onclick = function() {
+                    updateMovieName(movie.title);
+                };
+                titleLink.textContent = movie.title;
+                titleElement.appendChild(titleLink);
+                movieElement.appendChild(titleElement);
+
+                document.querySelector("#now-streaming .movie-list").appendChild(movieElement);
+            });
+        }
+
+                // Function to show additional movies
+            function viewMoreMovies(sectionId) {
+            // Get the section element by its ID
+            var movieSection = document.getElementById(sectionId);
+
+            // Get all movie frames
+            var movies = movieSection.querySelectorAll('.movie');
+
+            // Loop through all movies starting from the 5th oneS
+            for (var i = 5; i < movies.length; i++) {
+                // Toggle the 'hidden' class to show/hide the movie
+                movies[i].classList.toggle('hidden');
+            }
+
+            // Change the text of the "See More" link
+            var seeMoreLink = movieSection.querySelector('.see-more-link');
+            if (seeMoreLink) {
+                seeMoreLink.textContent = movies[5].classList.contains('hidden') ? 'See More' : 'See Less';
+            }
+        }
+        c=0
+        function fun1(){
+            if(c%2==0){
+            document.getElementById("d11").style.visibility="visible";
+            c+=1;}
+            else{
+                document.getElementById("d11").style.visibility="hidden";
+                c+=1;
+            }
+        }
+
+        function updateMovieName(name){
+            localStorage.setItem("movieName", name);
+        }
+
+        // Function to handle search
+        function searchMovies() {
+            var input, filter, movies, movie, title, i;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            movies = document.querySelectorAll('.movie');
+
+            for (i = 0; i < movies.length; i++) {
+                movie = movies[i];
+                title = movie.getElementsByTagName('h3')[0].textContent || movie.getElementsByTagName('h3')[0].innerText;
+                if (title.toUpperCase().indexOf(filter) > -1) {
+                    movie.style.display = '';
+                } else {
+                    movie.style.display = 'none';
+                }
+            }
+        }
+        function openLoginForm() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+
+        function closeForms() {
+            document.getElementById("overlay").style.display = "none";
+            overlay.style.display = 'none';
+        }
+
+        function toggleForms() {
+            document.getElementById("loginForm").style.display = document.getElementById("loginForm").style.display === "none" ? "block" : "none";
+            document.getElementById("signupForm").style.display = document.getElementById("signupForm").style.display === "none" ? "block" : "none";
+        }
+        function scrollToTarget() {
+        var targetElement = document.getElementById('now-streaming');
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

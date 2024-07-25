@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .confirmation-container {
+      position: relative;
+      text-align: center;
+      background-color: #fff;
+      color: black;
+      padding: 20px; /* Reduced padding */
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-image: url(large.png);
+      background-repeat: no-repeat;
+      background-size: 40px 40px; /* Reduced background size */
+      background-position: center 50%;
+      width: 60%; /* Medium width */
+      max-width: 400px; /* Maximum width */
+    }
+
+    h2 {
+      color: #000000;
+      font-size: 24px; /* Reduced font size */
+      margin-bottom: 15px; /* Reduced margin */
+    }
+
+    p {
+      color: #000000;
+      font-size: 14px; /* Reduced font size */
+      line-height: 1.4; /* Reduced line height */
+      margin-bottom: 8px; /* Reduced margin */
+    }
+
+    .btn-print, .btn-proceed {
+      margin-top: 15px; /* Reduced margin */
+      padding: 10px 20px; /* Reduced padding */
+      background-color: #193444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px; /* Reduced font size */
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-print:hover, .btn-proceed:hover {
+      background-color: #0a1c29;
+    }
+  </style>
+</head>
+<body>
+
+<div class="confirmation-container">
+  <h2>Ticket Confirmed!</h2>
+  <p><strong>Your ticket for the event has been successfully booked.</strong></p>
+  <p><strong>Movie Details:</strong></p>
+  <p><strong>Movie Name: <span id="movieName"></span></strong></p>
+  <p><strong>Date:</strong> <span id="date"></span></p>
+  <p><strong>Time:</strong> <span id="time"></span></p>
+  <p><strong>Venue:</strong> <span id="city"></span></p>
+  
+  <a href="#" class="btn-proceed" id="proceedBtn">Proceed</a>
+</div>
+
+<script>
+  // Load ticket details from local storage and display them
+  document.getElementById("date").textContent = localStorage.getItem("date");
+  document.getElementById("time").textContent = localStorage.getItem("time");
+  document.getElementById("city").textContent = localStorage.getItem("city");
+  document.getElementById("movieName").textContent = localStorage.getItem("movieName");
+
+  // Add event listener to the "Proceed" button
+  document.getElementById("proceedBtn").addEventListener("click", function(event) {
+    event.preventDefault();
+    // Define what happens when the "Proceed" button is clicked
+    window.location.href = 'nextPage.html'; // Change 'nextPage.html' to your target page
+  });
+</script>
+
+</body>
+</html>
